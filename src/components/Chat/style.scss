@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root, .app {
+  height: 100%;
+}
+
+.chat-box-wrapper {
+  max-width: 800px;
+  height: 80%;
+  border: 1px solid;
+}
