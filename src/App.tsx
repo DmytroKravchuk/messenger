@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./style.scss";
+
 import Chat from "./components/Chat";
 
 const App = () => {

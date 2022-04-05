@@ -1,5 +1,6 @@
 import React from "react";
-import {IMessages} from "./interfaces";
+import {IMessages} from "../interfaces/chat";
+import Message from "./Message";
 
 import "./style.scss";
 
@@ -7,10 +8,13 @@ type Props = {
     messages?: Array<IMessages>;
 };
 
-const ChatList = ({ messages }: Props) => {
-    console.log(messages)
+const ChatList = ({messages}: Props) => {
     return (
-        <div>ChatList</div>
+        <div className="chat-box p-b-10">
+            {messages?.map(message => (
+                <Message message={message} key={message.id}/>
+            ))}
+        </div>
     )
 }
 
