@@ -1,11 +1,12 @@
 import React from "react";
 
-import Chat from "./components/Chat";
+import LoginForm from "./components/LoginForm";
+import "./style.scss";
 
 const App = () => {
     return (
         <div className="app">
-            <Chat />
+            <LoginForm />
         </div>
     )
 }
