@@ -1,8 +1,22 @@
 import React from "react";
+import {IMessages} from "../../interfaces/chat";
+import Row from "antd/lib/Row";
+import Col from "antd/lib/Col";
 
-const Message = () => {
+type Props = {
+    message?: IMessages;
+};
+
+const Message = ({message}: Props) => {
+    const {outgoing, author, text} = message!;
+
     return (
-        <div>Message</div>
+        <Row justify={outgoing ? "end" : "start"}>
+            <Col span={20}>
+                {!outgoing && <p>{author}</p>}
+                <p>{text}</p>
+            </Col>
+        </Row>
     )
 }
 

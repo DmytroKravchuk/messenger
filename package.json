@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "chart on the canvas",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@babel/polyfill": "^7.12.1",
+    "@reduxjs/toolkit": "^1.8.1",
+    "@types/axios": "^0.14.0",
+    "@types/react-redux": "^7.1.24",
     "antd": "^4.19.3",
+    "axios": "^0.26.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.8",
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

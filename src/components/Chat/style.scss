@@ -16,4 +16,16 @@ body {
   max-width: 800px;
   height: 80%;
   border: 1px solid;
+  overflow: auto;
+
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: calc(100% - 40px);
+
+    .ant-row-end {
+      text-align: right;
+    }
+  }
 }
