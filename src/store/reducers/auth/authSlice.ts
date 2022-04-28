@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-import {IUser} from "../../../models/IUser";
+import {IUser} from "../../../interfaces/IUser";
 import {checkAuth, login, logout, registration} from "./ActionCreators";
 
 interface IAuth {
@@ -28,7 +28,7 @@ const authSlice = createSlice({
             state.user = action.payload?.user!;
             state.isAuth = true;
         })
-        builder.addCase(logout.fulfilled, (state, action) => {
+        builder.addCase(logout.fulfilled, (state) => {
             state.isAuth = false;
             state.user = {} as IUser;
         })

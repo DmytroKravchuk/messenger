@@ -72,6 +72,7 @@ module.exports = {
     devServer: {
         hot: isDev,
         port: 8080,
+        historyApiFallback: true,
     },
     devtool: isDev ? 'source-map' : false,
     resolve: {
