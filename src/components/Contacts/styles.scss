@@ -1,0 +1,46 @@
+@import "../../color-palette";
+
+.contacts {
+  .ant-col {
+    padding: 5px 0;
+  }
+
+  .contact-info-wrapper {
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
+
+    .contact-info {
+      width: calc(100% - 40px);
+      padding-left: 10px;
+
+      .title {
+        font-weight: bold;
+      }
+
+      .count {
+        padding: 2px;
+        border-radius: 5px;
+        background-color: $GREY;
+        color: $WHITE;
+        font-size: 0.714rem;
+        line-height: 1;
+      }
+    }
+
+    .message-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+  }
+}

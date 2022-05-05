@@ -1,0 +1,16 @@
+.main-page {
+  aside {
+    width: 200px;
+
+    .aside-header {
+      input {
+        width: 150px;
+      }
+    }
+  }
+
+  main {
+    width: calc(100% - 200px);
+    padding: 10px;
+  }
+}
