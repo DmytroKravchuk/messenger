@@ -10,8 +10,11 @@ import {login, registration} from "../../store/reducers/auth/ActionCreators";
 const LoginForm: FC = () => {
     const dispatch = useAppDispatch();
 
-    const [email, setEmail] = useState<string>("dimakravchuck93@gmail.com");
-    const [password, setPassword] = useState<string>("qwerty1");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [firstName, setFirstName] = useState<string>("");
+    const [secondName, setSecondName] = useState<string>("");
+    const [isRegistration, setRegistration] = useState<boolean>(false);
 
     const changeHandler = (func: Function) => (e: React.ChangeEvent<HTMLInputElement>) => func(e.target.value);
 
@@ -20,6 +23,16 @@ const LoginForm: FC = () => {
     return (
         <div className="login-form">
             <Space direction="vertical">
+                <Input
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={changeHandler(setFirstName)}
+                />
+                <Input
+                    placeholder="Second Name"
+                    value={secondName}
+                    onChange={changeHandler(setSecondName)}
+                />
                 <Input
                     placeholder="Email"
                     value={email}
