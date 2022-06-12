@@ -2,34 +2,47 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import Button from "antd/lib/button";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
-import Space from "antd/lib/space";
 import React, { FC, useState } from "react";
 
 import { useAppDispatch } from "../../hooks/redux";
 import { login, registration } from "../../store/reducers/auth/ActionCreators";
 
+type RegistrationProps = {
+  email: string;
+  password: string;
+  repeatPassword: string;
+  firstName: string;
+  secondName: string;
+};
+
 export const LoginForm: FC = () => {
   const dispatch = useAppDispatch();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
-  const [secondName, setSecondName] = useState<string>("");
+  const [formValue, setFormValue] = useState<RegistrationProps>({
+    email: "",
+    password: "",
+    repeatPassword: "",
+    firstName: "",
+    secondName: "",
+  });
+
   const [isRegistration, setRegistration] = useState<boolean>(false);
 
   const changeHandler =
-    (func: Function) => (e: React.ChangeEvent<HTMLInputElement>) =>
-      func(e.target.value);
-
-  const authHandler = (func: Function) => dispatch(func({ email, password }));
+    (param: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
+      setFormValue((state) => ({ ...state, [param]: e.target.value }));
 
   const submitHandler = () => {
     if (isRegistration) {
-      authHandler(registration);
+      dispatch(registration(formValue));
     } else {
-      authHandler(login);
+      const { email, password } = formValue;
+      dispatch(login({ email, password }));
     }
   };
+
+  const passwordIcon = (visible: boolean) =>
+    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />;
 
   return (
     <Form className='login-form' onFinish={submitHandler}>
@@ -37,41 +50,54 @@ export const LoginForm: FC = () => {
         <>
           <Input
             placeholder='First Name'
-            value={firstName}
-            onChange={changeHandler(setFirstName)}
+            value={formValue.firstName}
+            onChange={changeHandler("firstName")}
           />
           <Input
             placeholder='Second Name'
-            value={secondName}
-            onChange={changeHandler(setSecondName)}
+            value={formValue.secondName}
+            onChange={changeHandler("secondName")}
           />
         </>
       ) : null}
       <Form.Item>
         <Input
           placeholder='Email'
-          value={email}
-          onChange={changeHandler(setEmail)}
+          value={formValue.email}
+          onChange={changeHandler("email")}
         />
       </Form.Item>
       <Form.Item>
         <Input.Password
           placeholder='Password'
-          iconRender={(visible) =>
-            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-          }
-          value={password}
-          onChange={changeHandler(setPassword)}
+          iconRender={passwordIcon}
+          value={formValue.password}
+          onChange={changeHandler("password")}
           autoComplete='on'
         />
       </Form.Item>
+      {isRegistration ? (
+        <Form.Item>
+          <Input.Password
+            placeholder='Password'
+            iconRender={passwordIcon}
+            value={formValue.repeatPassword}
+            onChange={changeHandler("repeatPassword")}
+            autoComplete='on'
+          />
+        </Form.Item>
+      ) : null}
       <Form.Item>
-        <Button type='primary' htmlType='submit'>
-          login
-        </Button>
-        <Button type='primary' htmlType='submit'>
-          registration
-        </Button>
+        {!isRegistration ? (
+          <Button type='primary' htmlType='submit'>
+            login
+          </Button>
+        ) : null}
+        {isRegistration ? (
+          <Button type='primary' htmlType='submit'>
+            registration
+          </Button>
+        ) : null}
       </Form.Item>
     </Form>
   );
