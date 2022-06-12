@@ -1,9 +1,10 @@
+import { AxiosResponse } from "axios";
+
 import $api from "../http";
-import {AxiosResponse} from "axios";
-import {IUser} from "../interfaces/IUser";
+import { IUser } from "../interfaces/IUser";
 
 export default class UserService {
-    static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
-        return $api.get<IUser[]>("/users")
-    }
+  static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
+    return $api.get<IUser[]>("/users");
+  }
 }

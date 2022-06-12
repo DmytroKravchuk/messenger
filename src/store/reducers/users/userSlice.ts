@@ -1,21 +1,21 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import {getUsers} from "./ActionCreators";
+import { getUsers } from "./ActionCreators";
 
 const initialState = {
-    users: [],
-}
+  users: [],
+};
 
 const userSlice = createSlice({
-    name: "userReducer",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(getUsers.fulfilled, (state, action: any) => {
-            state.users = action.payload;
-        })
-    }
-})
+  name: "userReducer",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getUsers.fulfilled, (state, action: any) => {
+      state.users = action.payload;
+    });
+  },
+});
 
 export default userSlice.reducer;
 // export const {} = authSlice.actions;
