@@ -7,11 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { setupStore } from "./store";
+import { ThemeProvider } from "./ThemeProvider";
 
 ReactDOM.render(
   <Provider store={setupStore()}>
     <BrowserRouter>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root"),
