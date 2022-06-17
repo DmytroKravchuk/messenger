@@ -2,8 +2,8 @@ import "./style.scss";
 
 import React, { FC } from "react";
 
+import { useTheme } from "./context/theme-context";
 import { Router } from "./router/Router";
-import { useTheme } from "./ThemeProvider";
 
 const App: FC = () => {
   const { themeValue } = useTheme();

@@ -6,14 +6,17 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
+import { IntlContext } from "./context/intl-context";
+import { ThemeProvider } from "./context/theme-context";
 import { setupStore } from "./store";
-import { ThemeProvider } from "./ThemeProvider";
 
 ReactDOM.render(
   <Provider store={setupStore()}>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <IntlContext>
+          <App />
+        </IntlContext>
       </ThemeProvider>
     </BrowserRouter>
   </Provider>,

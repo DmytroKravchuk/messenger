@@ -3,6 +3,7 @@ import Button from "antd/lib/button";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import React, { FC, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 import { useAppDispatch } from "../../hooks/redux";
 import { login, registration } from "../../store/reducers/auth/ActionCreators";
@@ -89,9 +90,12 @@ export const LoginForm: FC = () => {
       ) : null}
       <Form.Item>
         {!isRegistration ? (
-          <Button type='primary' htmlType='submit'>
-            login
-          </Button>
+          <>
+            <Button type='primary' htmlType='submit'>
+              login
+            </Button>
+            <FormattedMessage id='login.sign-up' />
+          </>
         ) : null}
         {isRegistration ? (
           <Button type='primary' htmlType='submit'>
