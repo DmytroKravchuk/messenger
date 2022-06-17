@@ -10,7 +10,7 @@ interface Props {
   users: Array<IUser>;
 }
 
-export const Contacts: FC<Props> = ({ users }) => {
+export const Ontacts: FC<Props> = ({ users }) => {
   return (
     <div className='contacts'>
       {users.map(({ id, avatar, unreadCountMessages, messages }: IUser) => (
