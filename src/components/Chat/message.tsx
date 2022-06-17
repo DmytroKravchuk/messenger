@@ -9,13 +9,11 @@ type Props = {
 };
 
 const Message = ({ message }: Props) => {
-  const { outgoing, author, text } = message!;
-
   return (
-    <Row justify={outgoing ? "end" : "start"}>
+    <Row justify={message?.outgoing ? "end" : "start"}>
       <Col span={20}>
-        {!outgoing && <p>{author}</p>}
-        <p>{text}</p>
+        {message?.author ? <p>{message?.author}</p> : null}
+        {message?.text ? <p>{message?.text}</p> : null}
       </Col>
     </Row>
   );
