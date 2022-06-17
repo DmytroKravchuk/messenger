@@ -44,7 +44,7 @@ export const LoginForm: FC = () => {
         {isRegistrationForm ? (
           <>
             <Form.Item
-              name='name'
+              name='firstName'
               rules={[
                 {
                   required: true,
