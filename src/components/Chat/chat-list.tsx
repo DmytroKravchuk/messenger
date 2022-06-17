@@ -3,7 +3,7 @@ import "./style.scss";
 import React from "react";
 
 import { IMessages } from "../../interfaces/IChat";
-import Message from "./Message";
+import Message from "./message";
 
 type Props = {
   messages?: Array<IMessages>;

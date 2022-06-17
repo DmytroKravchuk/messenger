@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { IMessages } from "../../interfaces/IChat";
-import ChatInput from "./ChatInput";
-import ChatList from "./ChatList";
+import ChatInput from "./chat-input";
+import ChatList from "./chat-list";
 
 export const Chat: React.FC = () => {
   const [messages, setMessages] = useState<IMessages[]>([]);

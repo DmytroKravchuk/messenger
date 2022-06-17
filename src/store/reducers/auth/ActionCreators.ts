@@ -3,12 +3,12 @@ import axios from "axios";
 
 import { API_URL } from "../../../http";
 import { IAuthResponse } from "../../../models/response/AuthResponse";
-import { AuthService } from "../../../services/AuthService";
+import { AuthService } from "../../../services/auth-service";
 
 type RegistrationProps = {
   email: string;
   password: string;
-  repeatPassword: string;
+  confirmPassword: string;
   firstName: string;
   secondName: string;
 };
@@ -22,8 +22,7 @@ export const registration = createAsyncThunk(
   "auth/registration",
   async (payload: RegistrationProps) => {
     try {
-      const { email, password } = payload;
-      const response = await AuthService.registration(email, password);
+      const response = await AuthService.registration(payload);
       if (response.data.message) {
         throw new Error(response.data.message);
       }
@@ -41,8 +40,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (payload: LoginProps) => {
     try {
-      const { email, password } = payload;
-      const response = await AuthService.login(email, password);
+      const response = await AuthService.login(payload);
       localStorage.setItem("token", response.data.accessToken);
       return response.data;
     } catch (e: any) {
