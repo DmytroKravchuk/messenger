@@ -6,3 +6,8 @@ export interface IUser {
   messages?: Array<any>;
   unreadCountMessages?: number;
 }
+
+export interface IUserSearch {
+  search: string;
+  limit?: number;
+}
