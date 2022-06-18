@@ -3,7 +3,8 @@ import "./style.scss";
 import Spin from "antd/lib/spin";
 import React, { FC, useEffect, useState } from "react";
 
-import { AsideHeader, Chat, LoginForm, Ontacts } from "../components";
+import { Chat, LoginForm } from "../components";
+import { Sidebar } from "../components/Sidebar/sidebar";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { checkAuth } from "../store/reducers/auth/ActionCreators";
 
@@ -11,6 +12,7 @@ export const Main: FC = () => {
   const { isAuth, user } = useAppSelector((state) => state.authReducer);
   const dispatch = useAppDispatch();
   const [isLoading, setLoading] = useState(true);
+  const [activeUserId, setActiveUserId] = useState<string | number>("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -33,13 +35,16 @@ export const Main: FC = () => {
   if (isAuth) {
     return (
       <div className='h-100 flex main-page'>
-        <aside className='h-100 p-10'>
-          <AsideHeader />
-          <Ontacts users={[user]} />
-        </aside>
-        <main className='h-100 main-content'>
-          <Chat />
-        </main>
+        <Sidebar
+          user={user}
+          setActiveUserId={setActiveUserId}
+          activeUserId={activeUserId}
+        />
+        {activeUserId ? (
+          <main className='h-100 main-content'>
+            <Chat />
+          </main>
+        ) : null}
       </div>
     );
   }
