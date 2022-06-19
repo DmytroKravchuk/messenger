@@ -7,8 +7,8 @@ export const Users: FC = () => {
   const dispatch = useAppDispatch();
   const { users } = useAppSelector((state) => state.userReducer);
   useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+    // dispatch(getUsers());
+  }, [dispatch]);
   return (
     <div>
       {users.map(({ id }) => (
