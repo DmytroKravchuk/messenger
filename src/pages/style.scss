@@ -1,15 +1,15 @@
 .main-page {
   aside {
-    width: 200px;
+    width: 300px;
 
     .aside-header {
-      input {
-        width: 150px;
+      .anticon-menu {
+        margin-right: 20px;
       }
     }
   }
 
   main {
-    width: calc(100% - 200px);
+    width: calc(100% - 300px);
   }
 }
