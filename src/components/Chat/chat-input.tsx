@@ -1,4 +1,4 @@
-import Input from "antd/lib/input";
+import { Input } from "antd";
 import React, { useState } from "react";
 
 import { IChatInput } from "../../interfaces/IChat";
@@ -18,7 +18,6 @@ const ChatInput: React.FC<IChatInput> = (props) => {
         id: 3,
         author: "Dima",
         text,
-        outgoing: true,
       });
       setValue("");
     }

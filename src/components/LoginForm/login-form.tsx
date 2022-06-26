@@ -1,9 +1,7 @@
 import "./login-form.scss";
 
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import Button from "antd/lib/button";
-import Form from "antd/lib/form";
-import Input from "antd/lib/input";
+import { Button, Form, Input } from "antd";
 import Text from "antd/lib/typography/Text";
 import React, { FC, useState } from "react";
 import { FormattedMessage } from "react-intl";

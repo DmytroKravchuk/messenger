@@ -1,5 +1,5 @@
 import { MenuOutlined } from "@ant-design/icons";
-import Input from "antd/lib/input";
+import { Input } from "antd";
 import React, { ChangeEvent, FC, useEffect } from "react";
 
 import { useAppDispatch } from "../../../hooks/redux";

@@ -1,6 +1,6 @@
 import "./style.scss";
 
-import Spin from "antd/lib/spin";
+import { Spin } from "antd";
 import React, { FC, useEffect, useState } from "react";
 
 import { Chat, LoginForm } from "../components";
