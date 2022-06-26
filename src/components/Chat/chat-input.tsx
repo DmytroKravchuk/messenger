@@ -1,4 +1,4 @@
-import Input from "antd/lib/input";
+import { Input } from "antd";
 import React, { useState } from "react";
 
 import { IChatInput } from "../../interfaces/IChat";

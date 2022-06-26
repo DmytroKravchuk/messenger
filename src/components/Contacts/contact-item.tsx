@@ -1,5 +1,4 @@
-import Col from "antd/lib/Col";
-import Row from "antd/lib/Row";
+import { Col, Row } from "antd";
 import React, { FC } from "react";
 
 import { IUser } from "../../interfaces/IUser";
