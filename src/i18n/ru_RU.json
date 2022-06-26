@@ -2,5 +2,6 @@
   "login": "Войти",
   "sign-up": "Зарегистрироваться",
   "sign-up.question": "Нету аккаунта?",
-  "login.question": "Уже есть аккаунт?"
+  "login.question": "Уже есть аккаунт?",
+  "global-search": "Глобальный поиск"
 }

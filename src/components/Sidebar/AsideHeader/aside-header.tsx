@@ -1,31 +1,34 @@
 import { MenuOutlined } from "@ant-design/icons";
 import Input from "antd/lib/input";
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, useEffect } from "react";
 
 import { useAppDispatch } from "../../../hooks/redux";
 import { useDebounce } from "../../../hooks/useDelay";
 import { getUsers } from "../../../store/reducers/users/ActionCreators";
 
-export const AsideHeader: FC = () => {
+type Props = {
+  searchValue: string | null;
+  setSearchValue: (value: string | null) => void;
+};
+export const AsideHeader: FC<Props> = ({ searchValue, setSearchValue }) => {
   const dispatch = useAppDispatch();
-  const [value, setValue] = useState<string | null>(null);
 
-  const searchValue = useDebounce(value, 1000);
+  const value = useDebounce(searchValue, 1000);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setSearchValue(e.target.value);
   };
 
   useEffect(() => {
-    if (searchValue) {
-      dispatch(getUsers({ search: searchValue }));
+    if (value) {
+      dispatch(getUsers({ search: value }));
     }
-  }, [dispatch, searchValue]);
+  }, [dispatch, value]);
 
   return (
     <div className='aside-header flex align-center space-between m-b-20 p-x-10'>
       <MenuOutlined />
-      <Input placeholder='Search' onChange={changeHandler} />
+      <Input placeholder='Search' onChange={changeHandler} allowClear />
     </div>
   );
 };
