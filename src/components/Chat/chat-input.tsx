@@ -18,7 +18,6 @@ const ChatInput: React.FC<IChatInput> = (props) => {
         id: 3,
         author: "Dima",
         text,
-        outgoing: true,
       });
       setValue("");
     }
