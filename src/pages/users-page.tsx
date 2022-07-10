@@ -3,7 +3,7 @@ import React, { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { getUsers } from "../store/reducers/users/ActionCreators";
 
-export const Users: FC = () => {
+export const UsersPage: FC = () => {
   const dispatch = useAppDispatch();
   const { users } = useAppSelector((state) => state.userReducer);
   useEffect(() => {
