@@ -1,2 +1,5 @@
-export * from "./Main";
-export * from "./Users";
+import "./style.scss";
+
+export * from "./login-page";
+export * from "./main-page";
+export * from "./users-page";
