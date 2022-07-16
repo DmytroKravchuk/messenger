@@ -4,7 +4,7 @@ import { IMessages } from "../../interfaces/IChat";
 import ChatInput from "./chat-input";
 import ChatList from "./chat-list";
 
-export const Chat: React.FC = () => {
+export const ChatBox: React.FC = () => {
   const [messages, setMessages] = useState<IMessages[]>([]);
 
   const onAdd = (obj: IMessages) => {
