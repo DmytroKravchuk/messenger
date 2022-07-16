@@ -4,6 +4,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { IAuthResponse } from "../models/response/AuthResponse";
 
 export const API_URL = `http://localhost:5000`;
+export const WS_URL = `ws://localhost:5000/chat`;
 
 const $api = axios.create({
   withCredentials: true,

@@ -9,7 +9,13 @@ interface IAuth {
 }
 
 const initialState: IAuth = {
-  user: { email: "", id: "", isActivated: false },
+  user: {
+    email: "",
+    id: "",
+    isActivated: false,
+    firstName: "",
+    secondName: "",
+  },
   isAuth: false,
 };
 

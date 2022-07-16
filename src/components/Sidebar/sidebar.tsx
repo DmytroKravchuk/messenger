@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 
 import { IUser } from "../../interfaces/IUser";
-import { Contacts } from "../Contacts/contacts";
+import { Chats } from "../chats/chats";
 import { AsideHeader } from "./AsideHeader/aside-header";
 
 type Props = {
@@ -16,7 +16,7 @@ export const Sidebar: FC<Props> = ({ user, setActiveUserId, activeUserId }) => {
   return (
     <aside className='h-100 p-y-10'>
       <AsideHeader searchValue={searchValue} setSearchValue={setSearchValue} />
-      <Contacts
+      <Chats
         user={user}
         setActiveUserId={setActiveUserId}
         activeUserId={activeUserId}
