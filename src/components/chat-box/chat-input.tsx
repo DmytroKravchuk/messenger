@@ -2,9 +2,14 @@ import { Input } from "antd";
 import React, { useState } from "react";
 
 import { IChatInput } from "../../interfaces/IChat";
+import { IUser } from "../../interfaces/IUser";
 
-const ChatInput: React.FC<IChatInput> = (props) => {
-  const { onAdd } = props;
+interface Props extends IChatInput {
+  user: IUser;
+}
+
+const ChatInput: React.FC<Props> = ({ onAdd, user }) => {
+  const { firstName, secondName } = user;
   const [value, setValue] = useState<string>("");
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,12 +17,12 @@ const ChatInput: React.FC<IChatInput> = (props) => {
   };
 
   const submitHandler = (e: React.KeyboardEvent) => {
-    const text = value.trim();
-    if (e.key === "Enter" && text) {
+    const message = value.trim();
+    if (e.key === "Enter" && message) {
       onAdd({
-        id: 3,
-        author: "Dima",
-        text,
+        _id: "",
+        author: `${firstName} ${secondName}`,
+        message,
       });
       setValue("");
     }

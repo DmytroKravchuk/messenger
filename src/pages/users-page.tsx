@@ -11,8 +11,8 @@ export const UsersPage: FC = () => {
   }, [dispatch]);
   return (
     <div>
-      {users.map(({ id }) => (
-        <div key={id}>12</div>
+      {users.map(({ _id }) => (
+        <div key={_id}>12</div>
       ))}
     </div>
   );

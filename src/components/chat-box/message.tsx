@@ -1,18 +1,18 @@
 import { Col, Row } from "antd";
 import React from "react";
 
-import { IMessages } from "../../interfaces/IChat";
+import { IMessagesResponse } from "../../interfaces/IChat";
 
 type Props = {
-  message?: IMessages;
+  message: IMessagesResponse;
 };
 
 const Message = ({ message }: Props) => {
   return (
     <Row>
       <Col span={20}>
-        {message?.author ? <p>{message?.author}</p> : null}
-        {message?.text ? <p>{message?.text}</p> : null}
+        <p>{message.author}</p>
+        <p>{message.message}</p>
       </Col>
     </Row>
   );
