@@ -1,50 +1,44 @@
 import { Col, Row } from "antd";
 import React, { FC } from "react";
 
-import { IUser } from "../../interfaces/IUser";
+import { IRoom } from "../../interfaces/IChat";
 
 type Props = {
-  data: IUser;
-  setActiveUserId: (value: string | number) => void;
-  activeUserId: string | number;
-  isOwn?: boolean;
+  data: IRoom;
+  setActiveRoom: (value: IRoom) => void;
+  activeRoom: IRoom | null;
 };
 
-export const ChatItem: FC<Props> = ({
-  data,
-  setActiveUserId,
-  activeUserId,
-  isOwn,
-}) => {
-  const { id, avatar, messages, unreadCountMessages, firstName, secondName } =
-    data;
-  const handleActiveChatId = (id: string | number) => () => setActiveUserId(id);
-  const activeClass = id === activeUserId ? "active" : undefined;
+export const ChatItem: FC<Props> = ({ data, setActiveRoom, activeRoom }) => {
+  const { _id, name, avatar, messages, unreadCountMessages } = data;
+  const handleActiveRoom = (data: IRoom) => () => setActiveRoom(data);
+  const activeClass = _id === activeRoom?._id ? "active" : undefined;
 
-  const firstAbbreviationName = Array.from(firstName)[0];
-  const secondAbbreviationName = Array.from(secondName)[0];
+  const convertedAvatar = "";
+
+  const roomNameArr = name.split(" ");
+  const firstAbbreviationName = Array.from(roomNameArr[0])[0];
+  const secondAbbreviationName = Array.from(roomNameArr[1])[0];
 
   return (
     <Row
       gutter={[0, 5]}
-      onClick={handleActiveChatId(id)}
+      onClick={handleActiveRoom(data)}
       className={activeClass}
     >
       <Col span={24} className='contact-info-wrapper'>
         {avatar ? (
-          <img src={avatar} alt='avatar' className='avatar' />
+          <img src={convertedAvatar} alt='avatar' className='avatar' />
         ) : (
           <div className='avatar'>
-            {isOwn ? "SV" : `${firstAbbreviationName}${secondAbbreviationName}`}
+            {`${firstAbbreviationName}${secondAbbreviationName}`}
           </div>
         )}
         <div className='contact-info'>
-          <div className='title'>
-            {isOwn ? "Saved Message" : `${firstName} ${secondName}`}
-          </div>
+          <div className='title'>{name}</div>
           <div className='message-wrapper'>
             {messages && messages[0] ? (
-              <span className='message'>{messages[0]}</span>
+              <span className='message'>{messages[messages.length - 1]}</span>
             ) : null}
             {unreadCountMessages && (
               <span className='count'>{unreadCountMessages}</span>

@@ -4,12 +4,13 @@ import { ChatBox } from "../components";
 import { Sidebar } from "../components/Sidebar/sidebar";
 import { useAppSelector } from "../hooks/redux";
 import { WS_URL } from "../http";
+import { IRoom } from "../interfaces/IChat";
 
 export const MainPage: FC = () => {
   const socket = useMemo(() => new WebSocket(WS_URL), []);
   const { user } = useAppSelector((state) => state.authReducer);
 
-  const [activeUserId, setActiveUserId] = useState<string | number>("");
+  const [activeRoom, setActiveRoom] = useState<IRoom | null>(null);
 
   socket.onopen = () => {
     console.log("[open] WS connection success");
@@ -26,12 +27,12 @@ export const MainPage: FC = () => {
     <div className='h-100 flex main-page'>
       <Sidebar
         user={user}
-        setActiveUserId={setActiveUserId}
-        activeUserId={activeUserId}
+        setActiveRoom={setActiveRoom}
+        activeRoom={activeRoom}
       />
-      {activeUserId ? (
+      {activeRoom ? (
         <main className='h-100 main-content'>
-          <ChatBox />
+          <ChatBox user={user} />
         </main>
       ) : null}
     </div>

@@ -10,11 +10,12 @@ interface IAuth {
 
 const initialState: IAuth = {
   user: {
+    _id: "",
     email: "",
-    id: "",
     isActivated: false,
     firstName: "",
     secondName: "",
+    rooms: [],
   },
   isAuth: false,
 };
