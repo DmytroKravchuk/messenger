@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { IRoom } from "../../../interfaces/IChat";
 import { IUser } from "../../../interfaces/IUser";
 import { checkAuth, login, logout, registration } from "./ActionCreators";
 
 interface IAuth {
   user: IUser;
+  rooms: IRoom[];
   isAuth: boolean;
 }
 
@@ -15,8 +17,9 @@ const initialState: IAuth = {
     isActivated: false,
     firstName: "",
     secondName: "",
-    rooms: [],
+    roomsIds: [],
   },
+  rooms: [],
   isAuth: false,
 };
 
@@ -28,12 +31,16 @@ const authSlice = createSlice({
     builder.addCase(registration.fulfilled, (state, action) => {
       if (action.payload) {
         state.user = action.payload?.user;
+        // @ts-ignore
+        state.rooms = action.payload?.rooms;
         state.isAuth = true;
       }
     });
     builder.addCase(login.fulfilled, (state, action) => {
-      if (action.payload?.user) {
-        state.user = action.payload?.user;
+      if (action.payload) {
+        state.user = action.payload.user;
+        // @ts-ignore
+        state.rooms = action.payload.rooms;
         state.isAuth = true;
       }
     });
@@ -42,9 +49,11 @@ const authSlice = createSlice({
       state.user = {} as IUser;
     });
     builder.addCase(checkAuth.fulfilled, (state, action) => {
-      if (action.payload?.user) {
+      if (action.payload) {
         state.isAuth = true;
-        state.user = action.payload?.user;
+        state.user = action.payload.user;
+        // @ts-ignore
+        state.rooms = action.payload.rooms;
       }
     });
   },

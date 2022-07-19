@@ -1,7 +1,6 @@
 import { IUser } from "./IUser";
 
 export interface IMessages {
-  _id: number | string;
   author: string;
   message: string;
 }
@@ -29,6 +28,7 @@ export interface IRoom {
 
 export interface IChatSearchParams {
   user: IUser;
+  rooms: Array<IRoom>;
   setActiveRoom: (value: IRoom) => void;
   activeRoom: IRoom | null;
   searchValue: string | null;

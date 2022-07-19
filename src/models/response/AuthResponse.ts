@@ -1,3 +1,4 @@
+import { IRoom } from "../../interfaces/IChat";
 import { IUser } from "../../interfaces/IUser";
 
 export interface IErrorResponse {
@@ -10,4 +11,5 @@ export interface IAuthResponse extends IErrorResponse {
   accessToken: string;
   refreshToken: string;
   user: IUser;
+  rooms: IRoom;
 }

@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 
 import { ChatBox } from "../components";
 import { Sidebar } from "../components/Sidebar/sidebar";
 import { useAppSelector } from "../hooks/redux";
 import { WS_URL } from "../http";
-import { IRoom } from "../interfaces/IChat";
+import { IMessages, IRoom } from "../interfaces/IChat";
 
 export const MainPage: FC = () => {
   const socket = useMemo(() => new WebSocket(WS_URL), []);
-  const { user } = useAppSelector((state) => state.authReducer);
+  const { user, rooms } = useAppSelector((state) => state.authReducer);
 
   const [activeRoom, setActiveRoom] = useState<IRoom | null>(null);
 
@@ -16,23 +16,27 @@ export const MainPage: FC = () => {
     console.log("[open] WS connection success");
   };
 
-  useEffect(() => {
-    return () => {
-      console.log("[close] WS connection closed");
-      socket.close(1000, "chat was closed");
-    };
-  }, [socket]);
+  socket.onmessage = (msg: MessageEvent) => {
+    console.log(msg.data);
+  };
+
+  const onAdd = (message: IMessages) => {
+    if (activeRoom) {
+      socket.send(JSON.stringify({ roomId: activeRoom._id, message }));
+    }
+  };
 
   return (
     <div className='h-100 flex main-page'>
       <Sidebar
         user={user}
+        rooms={rooms}
         setActiveRoom={setActiveRoom}
         activeRoom={activeRoom}
       />
       {activeRoom ? (
         <main className='h-100 main-content'>
-          <ChatBox user={user} />
+          <ChatBox user={user} onAdd={onAdd} activeRoom={activeRoom} />
         </main>
       ) : null}
     </div>
