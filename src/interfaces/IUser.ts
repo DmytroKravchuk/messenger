@@ -1,5 +1,3 @@
-import { IMessagesResponse, IRoom } from "./IChat";
-
 export interface IUser {
   _id: string | number;
   firstName: string;
@@ -7,9 +5,8 @@ export interface IUser {
   email: string;
   isActivated: boolean;
   avatar?: string;
-  messages?: Array<IMessagesResponse>;
   unreadCountMessages?: number;
-  rooms: Array<IRoom>;
+  roomsIds: Array<string | number>;
 }
 
 export interface IUserSearch {

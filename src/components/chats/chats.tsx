@@ -5,11 +5,12 @@ import React, { FC, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { useAppSelector } from "../../hooks/redux";
-import { IChatSearchParams } from "../../interfaces/IChat";
+import { IChatSearchParams, IRoom } from "../../interfaces/IChat";
 import { ChatItem } from "./chat-item";
 
 export const Chats: FC<IChatSearchParams> = ({
   user,
+  rooms,
   setActiveRoom,
   activeRoom,
   searchValue,
@@ -23,7 +24,7 @@ export const Chats: FC<IChatSearchParams> = ({
 
   return (
     <div className='contacts'>
-      {user.rooms.map((data) => (
+      {rooms.map((data: IRoom) => (
         <ChatItem
           data={data}
           key={data._id}

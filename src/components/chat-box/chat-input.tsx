@@ -20,7 +20,6 @@ const ChatInput: React.FC<Props> = ({ onAdd, user }) => {
     const message = value.trim();
     if (e.key === "Enter" && message) {
       onAdd({
-        _id: "",
         author: `${firstName} ${secondName}`,
         message,
       });
